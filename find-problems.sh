@@ -1,14 +1,20 @@
+#!/bin/bash
+
+SCRIPT=`realpath $0`
+SCRIPTDIR=`dirname $SCRIPT`
+cd $SCRIPTDIR
+
 echo "Hello."
 echo ""
-echo "This is analysis of files of $(whoami) at $(hostname)."
-
+echo "This is analysis of account $(whoami) at $(hostname)."
 echo ""
 echo "[PHP files modified today]"
-find ~/domains/ -name "*.php" -mtime -1 -printf "%T@ %Tb %Td %TY %p\n" | sort -n
+find -name "*.php" -mtime -1 -printf "%T@ %Tb %Td %TY %p\n" | sort -n
 
 echo ""
-echo "[files containing yummingid]"
-grep -r 'yumingid' ~/domains/
+echo "[Files containing suspicious words]"
+grep -nr 'yumingid\|"chmod"'
+grep -nr "'chmod'|;exit();}if("
 
 echo ""
 echo "Best regards,"
