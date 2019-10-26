@@ -1,7 +1,8 @@
 #!/bin/bash
 
 SCRIPT=`realpath $0`
-if [ -z "$1" ] then
+if [ -z "$1" ]
+then
         SCRIPTDIR=`dirname $SCRIPT`
 else
         SCRIPTDIR="$1"
