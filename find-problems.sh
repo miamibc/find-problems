@@ -1,7 +1,11 @@
 #!/bin/bash
 
 SCRIPT=`realpath $0`
-SCRIPTDIR=`dirname $SCRIPT`
+if [ -z "$1" ] then
+        SCRIPTDIR=`dirname $SCRIPT`
+else
+        SCRIPTDIR="$1"
+fi
 cd $SCRIPTDIR
 
 echo "Hello."
